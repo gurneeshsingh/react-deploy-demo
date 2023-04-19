@@ -1,17 +1,25 @@
-import React from 'react';
-import Navbar from './components/Navbar';
-import Header from './components/Header';
-import Card from './components/Card';
+import React, { useState } from 'react';
+// Here we import our Welcome component from /components
+import Welcome from './components/Welcome';
 
-// In our main App component, we are rendering only single instances of Header and Navbar and several instances of Card
 function App() {
+  // We declare two state variables and functions to update both
+  // Name is the user's name, topic is what the user wants to learn
+  const [name, setName] = useState('');
+  const [topic, setTopic] = useState("");
+
   return (
-    <div>
-      <Header />
-      <Navbar />
-      <Card />
-      <Card />
-      <Card />
+    <div className="container">
+      <div>
+        <span>Enter your name: </span>
+        <input onChange={(e) => setName(e.target.value)} />
+      </div>
+      <div>
+        <span>What do you want to learn? </span>
+        <input onChange={(e) => setTopic(e.target.value)} />
+      </div>
+      <hr />
+      <Welcome name={name} topic={topic} />
     </div>
   );
 }
